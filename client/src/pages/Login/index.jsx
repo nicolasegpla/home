@@ -85,6 +85,15 @@ function Login() {
           <NavLink to='/'>
             <p className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 text-center my-5 underline">Go back</p>
         </NavLink>
+        <div>
+          <p className="text-center mt-16">Do you need an account?</p>
+          <NavLink to='/create-account'>
+            <p className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 text-center my-1 underline cursor-pointer">Create account</p>
+          </NavLink>
+          
+        </div>
+
+        
         </div>
       </div>
             </Layout>

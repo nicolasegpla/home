@@ -1,6 +1,7 @@
 import CreateRoom from "../../Components/CreateRoom"
 import Layout from "../../Components/Layout"
 import NavBarDashboard from "../../Components/NavBarDashboard"
+import ButtonCreate from "../../Components/ButtomCreate"
 import { useLocalStorage } from "../../custom/useLocalStorage"
 
 
@@ -15,6 +16,7 @@ function Dashboard() {
             <Layout>
                 <NavBarDashboard/>
                 <CreateRoom />
+                <ButtonCreate />
             </Layout>
         </>
     )

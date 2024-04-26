@@ -5,7 +5,7 @@ function NavBar() {
         <>
             <nav className='flex justify-between items-center w-full h-24 top-0 fixed z-10'>
                     <div className='mx-8'>
-                        <span className='text-2xl cursor-pointer font-bold text-gray-700'>HOME</span>
+                        <span className='text-2xl cursor-pointer font-medium text-gray-700'>HOME</span>
                     </div>
                     <div className='flex justify-between items-center mx-8 gap-6'>
                         <NavLink to='/login'>

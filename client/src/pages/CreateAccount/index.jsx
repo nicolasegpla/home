@@ -89,7 +89,7 @@ function CreateAccount() {
               </button>
             </div>
           </form>
-        <NavLink to='/' >
+        <NavLink to='/'  >
             <p className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 text-center my-5 underline">Go back</p>
         </NavLink>
           
