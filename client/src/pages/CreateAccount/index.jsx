@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom"
 import Layout from "../../Components/Layout"
 import { HomeIcon } from "@heroicons/react/24/outline"
-import { usePostUserRegister } from "../../custom/usePostUserRegister"
+import { useContext } from "react"
+import { GlobalContext } from "../../global/GlobalContext"
 function CreateAccount() {
 
 
-    const { registration, handleUserChange, user} = usePostUserRegister()
+    const { registration, handleUserChange, user} = useContext(GlobalContext)
 
     return(
         <>

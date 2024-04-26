@@ -1,24 +1,27 @@
 import { useState } from "react";
-import { storeUser } from "./helpers";
 import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from "./useLocalStorage";
+import { URL_BASE } from "./helpers"
+
+
+
 
 
 function useDoLogin() {
+
+  const { saveUserSesion } = useLocalStorage();
+  
 
   const initialValue = ({ identifier: "", password: ""})
   const navigate = useNavigate()
 
   const [userLogin, setUserLogin] = useState(initialValue)
-  
-
-
+ 
 
   function doLogin(e) {
     e.preventDefault()
 
-    const url = 'http://localhost:1337/api/auth/local';
-
-    fetch(url, {
+    fetch(`${URL_BASE}auth/local`, {
       method: 'POST',
       body: JSON.stringify(userLogin),
       headers: {
@@ -28,7 +31,7 @@ function useDoLogin() {
     .then((res) => res.json())
     .then((data) => {
         if(data.jwt) {
-            storeUser(data);
+            saveUserSesion(data);
             navigate("/dashboard")
         }
     })
@@ -46,7 +49,6 @@ function useDoLogin() {
 
     const handleUserLogin = ({ target }) => {
         const { name, value } = target;
-        console.log(target.value)
         setUserLogin((currentUser) => ({
         ...currentUser,
         [name]: value,
@@ -57,7 +59,6 @@ function useDoLogin() {
         doLogin,
         handleUserLogin,
         userLogin,
-        
     }
 }
 

@@ -9,8 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": false,
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -66,17 +65,11 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "rooms": {
+    "cervezas": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::romm.romm",
-      "mappedBy": "users_permissions_user"
-    },
-    "tasks": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::task.task",
-      "mappedBy": "users_permissions_user"
+      "target": "api::cerveza.cerveza",
+      "mappedBy": "user"
     }
   }
 }

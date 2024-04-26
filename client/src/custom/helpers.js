@@ -1,25 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from "./useLocalStorage";
 
-export const storeUser = (data) => {
-  localStorage.setItem(
-    "user",
-    JSON.stringify({
-      username: data.user.username,
-      jwt: data.jwt,
-    })
-  );
-};
-
-export const userData = () => {
-  const stringifiedUser = localStorage.getItem("user") || '""';
-  return JSON.parse(stringifiedUser || {});
-};
 
 export const Protector = ({ Component }) => {
   const navigate = useNavigate();
-
-  const { jwt } = userData();
+  const { jwt } = useLocalStorage()
 
   useEffect(() => {
     if (!jwt) {
@@ -29,3 +15,7 @@ export const Protector = ({ Component }) => {
 
   return Component;
 };
+
+//esta es la url base para hacer peticiones a nuestra api//
+export const URL_BASE = 'http://localhost:1337/api/'
+//end//

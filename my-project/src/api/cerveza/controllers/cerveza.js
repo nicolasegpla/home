@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * piloto controller
+ * cerveza controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::piloto.piloto');
+module.exports = createCoreController('api::cerveza.cerveza');

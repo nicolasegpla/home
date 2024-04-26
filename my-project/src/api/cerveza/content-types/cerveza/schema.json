@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "tasks",
+  "collectionName": "cervezas",
   "info": {
-    "singularName": "task",
-    "pluralName": "tasks",
-    "displayName": "task",
+    "singularName": "cerveza",
+    "pluralName": "cervezas",
+    "displayName": "cerveza",
     "description": ""
   },
   "options": {
@@ -12,23 +12,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "title": {
       "type": "string"
     },
-    "date": {
-      "type": "date"
-    },
-    "Description": {
-      "type": "text"
-    },
-    "points": {
+    "price": {
       "type": "integer"
     },
-    "users_permissions_user": {
+    "user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "tasks"
+      "inversedBy": "cervezas"
     }
   }
 }

@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom"
 import Layout from "../../Components/Layout"
 import { HomeIcon } from "@heroicons/react/24/outline"
-import { useDoLogin } from "../../custom/useDoLogin"
+import { useContext } from "react"
+import { GlobalContext } from "../../global/GlobalContext"
 
 
 
@@ -9,7 +10,7 @@ import { useDoLogin } from "../../custom/useDoLogin"
 
 function Login() {
 
-    const { userLogin, handleUserLogin, doLogin } = useDoLogin()
+    const { userLogin, handleUserLogin, doLogin } = useContext(GlobalContext)
 
  
 

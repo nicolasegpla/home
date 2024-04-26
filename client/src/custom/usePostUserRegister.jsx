@@ -1,17 +1,24 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { URL_BASE } from "./helpers"
+
 
 
 
 function usePostUserRegister() {
 
     const initialUser = { email: "", password: "", username: "" };
+    
 
     const [user, setUser] = useState(initialUser)
 
-    const url = `http://localhost:1337/api/auth/local/register`;
+    const url = `${URL_BASE}auth/local/register`;
+
+    const navigate = useNavigate();
 
     function registration(e) {
         e.preventDefault()
+        
         
         if(user.username && user.email && user.password) {
             fetch(url, {
@@ -22,7 +29,7 @@ function usePostUserRegister() {
                 },
             })
             .then((response) => response.json())
-            .then((res) => {console.log("Success", res.user.confirmed), location.href = 'http://localhost:5173/login';})
+            .then((res) => {console.log("Success", res.user.confirmed), navigate("/login");})
             .catch((error) => {console.error("Error", error)})
         }else {
             console.log('no se pudo crear el usuario')

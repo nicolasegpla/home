@@ -6,10 +6,9 @@ import MyAccount from '../MyAccount'
 import RecoverKey from '../RecoverKey'
 import NotFound from '../NotFound'
 import Dashboard from '../Dashboard'
-
-
-
 import '../../App.css'
+import { GlobalProvider } from '../../global/GlobalContext'
+
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -27,11 +26,14 @@ const AppRoutes = () => {
 }
 
 function App() {
+        
   return (
     <>
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter> 
+          <BrowserRouter>
+            <GlobalProvider>
+              <AppRoutes />
+            </GlobalProvider>
+          </BrowserRouter> 
     </>
   )
 }
