@@ -70,6 +70,12 @@
       "relation": "oneToMany",
       "target": "api::cerveza.cerveza",
       "mappedBy": "user"
+    },
+    "rooms": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::room.room",
+      "mappedBy": "user"
     }
   }
 }

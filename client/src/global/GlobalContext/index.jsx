@@ -18,6 +18,7 @@ function GlobalProvider({children}) {
 
     
     const [ userId, setUserId ] = useState(null);
+    const [modalCreateRoom, setModalCreateRoom] = useState(false); // este es el estado para abrir o cerra el modal que crea un "room nuevo"//
 
     
     const { username, jwt } = useLocalStorage();
@@ -64,6 +65,11 @@ function GlobalProvider({children}) {
             })
         },[jwt, query, userId])
 
+
+        function closeModalRoom () {
+            setModalCreateRoom(estado => !estado)
+        }
+
     return(
         <GlobalContext.Provider 
             value={{
@@ -75,6 +81,9 @@ function GlobalProvider({children}) {
                 registration,
                 handleUserChange,
                 user,
+                modalCreateRoom,
+                setModalCreateRoom,
+                closeModalRoom,
             }}
         >
             {children}

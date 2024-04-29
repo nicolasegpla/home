@@ -399,6 +399,34 @@ export interface ApiCervezaCerveza extends Schema.CollectionType {
   };
 }
 
+export interface ApiRoomRoom extends Schema.CollectionType {
+  collectionName: 'rooms';
+  info: {
+    singularName: 'room';
+    pluralName: 'rooms';
+    displayName: 'room';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    user: Attribute.Relation<
+      'api::room.room',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::room.room', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::room.room', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -812,6 +840,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::cerveza.cerveza'
     >;
+    rooms: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::room.room'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -840,6 +873,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::cerveza.cerveza': ApiCervezaCerveza;
+      'api::room.room': ApiRoomRoom;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
