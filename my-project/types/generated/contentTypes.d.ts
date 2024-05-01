@@ -412,7 +412,7 @@ export interface ApiRoomRoom extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    user: Attribute.Relation<
+    userRoom: Attribute.Relation<
       'api::room.room',
       'manyToOne',
       'plugin::users-permissions.user'
