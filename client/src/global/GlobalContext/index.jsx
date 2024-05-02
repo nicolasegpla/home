@@ -69,7 +69,7 @@ function GlobalProvider({children}) {
         },[jwt, query, userId])
 
         useEffect(() => {
-            fetch(`http://localhost:1337/api/rooms?populate=*&filters[userRoom][$eq]=${userId}`, {
+            fetch(`http://localhost:1337/api/rooms?populate=*&filters[userRoom][$eq]=${userId}&pagination[pageSize]=4`, {
                 headers: {
                     Authorization: `bearer ${jwt}`
                 }
