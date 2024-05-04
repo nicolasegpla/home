@@ -14,11 +14,6 @@ function Dashboard() {
     
     const { modalCreateRoom, rooms} = useContext(GlobalContext)
 
-   
-
-    
-
-
     return(
         <>
             <Layout>

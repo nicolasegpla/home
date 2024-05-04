@@ -2,6 +2,7 @@ import { useContext } from 'react';
 
 import { GlobalContext } from "../../global/GlobalContext"
 
+
 function NavBarDashboard() {
 
     const { username, logout } = useContext(GlobalContext)

@@ -8,6 +8,7 @@ import NotFound from '../NotFound'
 import Dashboard from '../Dashboard'
 import '../../App.css'
 import { GlobalProvider } from '../../global/GlobalContext'
+import { AllRooms } from '../AllRooms'
 
 
 const AppRoutes = () => {
@@ -19,6 +20,7 @@ const AppRoutes = () => {
     { path: '/*', element: <NotFound /> },
     { path: '/recover-key', element: <RecoverKey /> },
     { path: '/dashboard', element: <Dashboard />},
+    { path: '/all-rooms', element: <AllRooms />},
     
   ])
 

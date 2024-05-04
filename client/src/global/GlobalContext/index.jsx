@@ -23,6 +23,7 @@ function GlobalProvider({children}) {
     const [ userId, setUserId ] = useState(null);
     const [modalCreateRoom, setModalCreateRoom] = useState(false); // este es el estado para abrir o cerra el modal que crea un "room nuevo"//
     const [rooms, setRooms] = useState({});
+    const [allRooms, setAllRooms] = useState({});
 
     
     const { username, jwt } = useLocalStorage();
@@ -80,12 +81,24 @@ function GlobalProvider({children}) {
             })
         },[jwt, query, userId, data])
 
+        useEffect(() => {
+            fetch(`http://localhost:1337/api/rooms?populate=*&filters[userRoom][$eq]=${userId}`, {
+                headers: {
+                    Authorization: `bearer ${jwt}`
+                }
+            })
+            .then((res) => res.json())
+            .then((response) => {
+                setAllRooms(response)
+            })
+        },[jwt, query, userId, data])
+
 
         function closeModalRoom () {
             setModalCreateRoom(estado => !estado)
         }
 
-        console.log(rooms)
+        console.log(allRooms)
 
     return(
         <GlobalContext.Provider 
@@ -106,6 +119,7 @@ function GlobalProvider({children}) {
                 createElement,
                 data,
                 rooms,
+                allRooms,
                
             }}
         >
